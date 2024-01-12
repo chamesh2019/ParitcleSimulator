@@ -56,7 +56,7 @@ class Particle:
     def __init__(self, cordinates):
         self.radius = 5
         self.smoothing = 10 # percentage 
-        self.ACC_CONSTANT = 10**6
+        self.ACC_CONSTANT = 10**4
         self.x, self.y = cordinates
         self.accelerationX = 0
         self.accelerationY = 0
@@ -121,8 +121,8 @@ class Particle:
             nodeX, nodeY = node
             dist = math.dist((nodeX, nodeY), (self.x, self.y))
             theta = math.atan2((nodeY - self.y), (nodeX - self.x))
-            accelerationX += self.ACC_CONSTANT / (dist ** 4) * math.cos(theta)
-            accelerationY += self.ACC_CONSTANT / (dist ** 4) * math.sin(theta)
+            accelerationX += self.ACC_CONSTANT / (dist ** 2) * math.cos(theta)
+            accelerationY += self.ACC_CONSTANT / (dist ** 2) * math.sin(theta)
 
         
         self.accelerationX = -accelerationX
